@@ -1,38 +1,193 @@
-.App {
-  text-align: center;
+/* --- Root --- */
+:root {
+  --bg-dark: #121212;         /* Genel arka plan */
+  --bg-secondary: #1a1a1a;    /* Chat ve input container arka planı */
+  --bg-input: #1f1f1f;        /* Input field arka planı */
+  --color-user: #3a3a3a;      /* Kullanıcı mesajları */
+  --color-ai: #2c2c2c;        /* AI mesajları */
+  --text-light: #e0e0e0;      /* Genel yazı rengi */
+  --text-muted: #888888;      /* Açıklama / başlık rengi */
+  --radius: 8px;              /* Border radius */
+  --transition-speed: 0.3s;   /* Hover ve animasyon geçişleri */
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+/* --- Global Reset --- */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Inter', sans-serif;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+body, html, #root {
+  height: 100%;
+  width: 100%;
+  background-color: var(--bg-dark);
+  color: var(--text-light);
 }
 
-.App-header {
-  background-color: #282c34;
+/* --- Root container --- */
+.root {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 1rem;
   min-height: 100vh;
+}
+
+/* --- HomePage container --- */
+.home-page {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 900px;
+  height: 90vh;
+  overflow: hidden;
+}
+
+/* --- Chat Area --- */
+.chat-area {
+  flex: 1;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255,255,255,0.2) rgba(28,28,28,0.2);
+}
+
+.chat-area::-webkit-scrollbar {
+  width: 6px;
+}
+
+.chat-area::-webkit-scrollbar-thumb {
+  background-color: rgba(255,255,255,0.2);
+  border-radius: 3px;
+}
+
+.chat-area::-webkit-scrollbar-track {
+  background-color: rgba(28,28,28,0.2);
+}
+
+/* --- Messages --- */
+.user-message, .ai-message {
+  max-width: 75%;
+  padding: 0.65rem 1rem;
+  border-radius: var(--radius);
+  word-wrap: break-word;
+  line-height: 1.4;
+  font-size: 1rem;
+  transition: var(--transition-speed);
+}
+
+.user-message {
+  background: var(--color-user); /* çok soft gri */
+  color: var(--text-light);
+  align-self: flex-end;
+}
+
+.ai-message {
+  background: var(--color-ai); /* çok soft gri, biraz daha koyu */
+  color: var(--text-light);
+  align-self: flex-start;
+}
+
+/* --- Input Container --- */
+.inputs-container {
+  display: flex;
+  gap: 0.5rem;
+  padding: 1rem;
+  border-top: 1px solid #222;
+}
+
+/* --- Input Field --- */
+.text-input {
+  flex: 1;
+  padding: 0.75rem 1rem;
+  background: var(--bg-input);
+  color: var(--text-light);
+  border: none;
+  border-radius: var(--radius);
+  font-size: 1rem;
+  transition: var(--transition-speed);
+}
+
+.text-input:focus {
+  outline: 2px solid rgba(200,200,200,0.3);
+}
+
+/* --- Send Button --- */
+button {
+  padding: 0.75rem 1.25rem;
+  background: rgba(200,200,200,0.2); /* çok soft, göz yormayan renk */
+  color: var(--text-light);
+  font-weight: 600;
+  border: none;
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: var(--transition-speed);
+}
+
+button:hover {
+  background: rgba(200,200,200,0.35);
+  transform: translateY(-1px);
+}
+
+button:disabled {
+  background: rgba(100,100,100,0.2);
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* --- Title Card --- */
+.title {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  flex: 1;
+  gap: 0.5rem;
+  text-align: center;
+  color: var(--text-muted);
 }
 
-.App-link {
-  color: #61dafb;
+.ai-name {
+  font-size: 2rem;
+  color: var(--text-light);
+  font-weight: 700;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.developer-name {
+  font-size: 1rem;
+  font-weight: 400;
+  color: var(--text-muted);
+}
+
+/* --- Responsive Design --- */
+@media screen and (max-width: 600px) {
+  .home-page {
+    height: 100vh;
   }
-  to {
-    transform: rotate(360deg);
+
+  .user-message, .ai-message {
+    max-width: 90%;
+    font-size: 0.95rem;
+  }
+
+  .text-input {
+    font-size: 0.95rem;
+  }
+
+  button {
+    padding: 0.65rem 1rem;
+  }
+
+  .ai-name {
+    font-size: 1.5rem;
+  }
+
+  .developer-name {
+    font-size: 0.9rem;
   }
 }
