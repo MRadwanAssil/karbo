@@ -191,3 +191,19 @@ button:disabled {
     font-size: 0.9rem;
   }
 }
+
+@keyframes slideFadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(20px); /* aşağıdan başla */
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0); /* kendi yerine gelsin */
+  }
+}
+
+/* Kullanıcı ve AI mesajlarına animasyonu uygula */
+.user-message, .ai-message {
+  animation: slideFadeIn 0.4s ease forwards; /* 0.4 saniyede geçiş */
+}
