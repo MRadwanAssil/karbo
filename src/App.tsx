@@ -295,7 +295,6 @@ class AdComponent extends React.Component {
 const App = (): React.ReactElement => {
     return (
         <div className="root">
-            <AdComponent />
             <HomePage />
         </div>
     )
