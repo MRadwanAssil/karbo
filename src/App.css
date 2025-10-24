@@ -33,8 +33,7 @@ html,
 #root {
       height: 100%;
       width: 100%;
-      /* background-color: var(--bg-dark); */
-      background-image: url("./background.jpeg");
+      background-color: var(--bg-dark);
       background-size: cover;
       /* ✅ Fotoğraf ekranı tamamen kaplar */
       background-position: center;
